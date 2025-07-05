@@ -34,6 +34,8 @@ The dataset includes the following emotion categories:
 ## 🧠 Model Architecture
 
 - **Base Model**: `mobilevit_s` from [timm](https://github.com/huggingface/pytorch-image-models)
+- **Linear Learning**: Training only the Classifier Head first
+- **Gradual Unfreezing of Layers**: Gradually unfreeze the CNN and ViT layers 
 - **Modified Classifier Head**:
   ```python
   nn.Sequential(
@@ -43,3 +45,4 @@ The dataset includes the following emotion categories:
       nn.BatchNorm1d(256),
       nn.Linear(256, NUM_CLASSES)
   )
+
